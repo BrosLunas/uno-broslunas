@@ -400,7 +400,7 @@ window.addEventListener('load', () => {
         showPopup({
           header: 'Esta sala no esta disponible.'
         }).then(() => {
-          window.location.href = 'https://uno-broslunas.vercel.app/';
+          window.location.href = './index.html';
         });
         return;
       }
@@ -423,7 +423,7 @@ window.addEventListener('load', () => {
           showPopup({
             header: 'El juego ya ha empezado.'
           }).then(() => {
-            window.location.href = 'https://uno-broslunas.vercel.app/';
+            window.location.href = './index.html';
           });
           return;
         }
@@ -496,7 +496,7 @@ function handleGameUpdate(snap) {
     showPopup({
       header: `El operador (${Object.values(incomingGameData.players)[0].name}) te ha expulsado del servidor.`
     }).then(() => {
-      window.location.href = 'https://uno-broslunas.vercel.app/';
+      window.location.href = './index.html';
     });
   }
 
@@ -505,7 +505,7 @@ function handleGameUpdate(snap) {
       header: `El operador (${Object.values(game.gameData.players)[0].name}) se ha salido de la partida.`,
       paragraph: 'Apgando sala.'
     }).then(() => {
-      window.location.href = 'https://uno-broslunas.vercel.app/';
+      window.location.href = './index.html';
     });
     return;
   }
