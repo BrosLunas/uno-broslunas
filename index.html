@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uno Online | Broslunas</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+  </head>
+  <body>
+    
+    <div id="app">
+
+      <div v-if="state === 'main'" class="screen main">
+
+        <main>
+          <header>UNO | Broslunas</header>
+          <br>
+          <button @click="createGame" class="red">Crear Sala</button>
+        </main>
+        
+        <p class="credits">By Broslunas</p>
+
+      </div>
+
+      <div v-if="state === 'lobby'" class="screen lobby">
+
+        <header>Esperando a mas jugadores</header>
+        <p>Enviale esta pagina a tu amigo para que se conecte.</p>
+
+        <div class="game-settings">
+          <h1>Ajustes</h1>
+          <p v-for="(setting, key) in gameData.settings" :class="{ rainbow: setting.enabled }">
+            <input :checked="setting.enabled" type="checkbox" :name="key" :disabled="!host" @click="toggleSetting(setting);">
+            <label :for="key">{{setting.name}}</label>
+          </p>
+        </div>
+
+        <div class="players">
+          <h1>Jugadores:</h1>
+          <p v-for="(player, key) in gameData.players" :class="{ rainbow: key === playerKey }">{{player.name}} <button @click="kick(key)" v-if="host && key !== playerKey" class="red">✕</button></p>
+        </div>
+
+        <button @click="changeName" class="blue">Cambiar Nombre</button>
+
+        <button @click="startGame" class="green" v-if="host && Object.values(gameData.players).length > 1">Empezar Juego</button>
+
+        <p class="credits">By Broslunas</p>
+
+      </div>
+
+      <div v-if="state === 'game'" class="screen game">
+
+        <div class="board">
+          <div>
+            <img :src="`cards/${gameData.currentCard.name}.png`">
+            <img src="cards/back.png" @click="pickRandomCard">
+            <span :style="`visibility: ${gameData.currentCard.name === '+4' || gameData.currentCard.name === '+col' ? 'visible' : 'hidden'};`">{{gameData.currentCard.color}}</span>
+            <span>+{{gameData.cardStack}}</span>
+          </div>
+          <button class="green" :class="{ active: unoDeclared }" :disabled="gameData.players[playerKey].cards.length !== 2" @click="declareUno">UNO!</button>
+        </div>
+
+        <div class="log"></div>
+
+        <div class="color-picker" v-show="isPickingColor">
+          <button class="red">Rojo</button>
+          <button class="blue">Azul</button>
+          <button class="green">Verde</button>
+          <button class="yellow">Amarillo</button>
+        </div>
+
+        <div class="player-cards" :style="`justify-content: ${playerCardsJustification};`" :class="{ active: gameData.currentPlayer === playerId }">
+          <img :class="{ 'img-eligible-for-skip': cardCanSkip(card)  }" v-for="(card, index) in gameData.players[playerKey].cards" :data-index="index" @click="playCard(index)" :src="`cards/${card.name}.png`">
+          <button class="yellow" v-show="canSkip" @click="skipTurn">Saltar</button>
+        </div>
+
+        <div class="top-bar">
+          
+          <div class="other-players">
+  
+            <div v-for="otherPlayer in otherPlayers" class="other-player-cards" :class="{ active: Object.values(gameData.players)[gameData.currentPlayer].name === otherPlayer.name }">
+              <img v-for="card in otherPlayer.cards" src="cards/back.png">
+              <p>{{otherPlayer.name}} ({{otherPlayer.cards.length}})</p>
+            </div>
+
+          </div>
+
+          <div class="turn-order" :style="`transform: rotateZ(${gameData.turnOrder === 1 ? 0 : 180}deg); --current-color: ${gameData.currentCard.color.replace('green', 'lime')}`">➜</div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-analytics.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.6.3/firebase-database.js"></script>
+
+    <script>
+      const firebaseConfig = {
+        apiKey: "AIzaSyAt5kqwnpoPq3PCOqnNilu58Kq_mbnQgk0", authDomain: "uno-online-92f84.firebaseapp.com", projectId: "uno-online-92f84", storageBucket: "uno-online-92f84.appspot.com", messagingSenderId: "783279971399", appId: "1:783279971399:web:8a6caa2f1097686735e562", measurementId: "G-TMR21FRV45"
+      };
+      firebase.initializeApp(firebaseConfig);
+      firebase.analytics();
+    </script>
+
+    <script src="app.js"></script>
+  </body>
+</html>

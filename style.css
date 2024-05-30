@@ -1,0 +1,401 @@
+:root {
+  --base-1: #282c2c;
+  --base-2: #363b3b;
+}
+
+@font-face {
+  font-family: lineto-circular;
+  src: url(lineto-circular-black.ttf);
+}
+
+* {
+  box-sizing: border-box;
+  font-family: lineto-circular;
+  user-select: none;
+}
+
+h1, h3, p, header, span {
+  color: white;
+}
+
+h1 {
+  font-size: 38px;
+}
+
+p, h3 {
+  font-size: 32px;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+button {
+  background-color: var(--base-2);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-size: 32px;
+  cursor: pointer;
+}
+
+button:focus {
+  outline: none;
+}
+
+button.red {
+  border: 4px solid red;
+}
+button.blue {
+  border: 4px solid blue;
+}
+button.green, div.green {
+  border: 4px solid lime;
+}
+button.yellow {
+  border: 4px solid yellow;
+}
+
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+  background-color: var(--base-2);
+  position: fixed;
+}
+
+.screen {
+  width: 80%;
+  margin: 0 auto;
+  padding: 100px 20px;
+  background-color: var(--base-1);
+  height: 100vh;
+}
+
+.screen.lobby {
+  overflow-y: scroll;
+}
+
+.screen.game {
+  padding-top: 0;
+  width: 100%;
+}
+
+header {
+  text-align: center;
+  font-size: 70px;
+}
+
+.screen.main p.credits, .screen.lobby p.credits {
+  position: fixed;
+  left: calc(10vw + 10px);
+  bottom: 5px;
+  margin: 0;
+}
+
+.screen.main main {
+  position: absolute;
+  left: 50%; top: 50%;
+  transform: translate(-50%, -50%) translateY(-100px);
+}
+
+.screen.main, .screen.lobby {
+  text-align: center;
+}
+
+.lobby .players, .lobby .game-settings {
+  padding: 20px;
+  background-color: var(--base-2);
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.lobby > button {
+  margin-top: 20px;
+}
+
+.lobby .players p {
+  margin: 5px;
+}
+
+.lobby .players button {
+  font-size: 24px;
+  padding: 5px 15px;
+  margin-left: 20px;
+}
+
+img {
+  -webkit-user-drag: none;
+}
+
+.player-cards img, .other-player-cards img {
+  transition: width 0.3s ease, height 0.3s ease;
+}
+
+.other-player-cards img {
+  width: 50px;
+  height: calc(50px * 1.5);
+}
+
+.player-cards img {
+  width: 75px;
+  height: calc(75px * 1.5);
+}
+
+.player-cards.active img {
+  width: 125px;
+  height: calc(125px * 1.5);
+}
+
+.not-touch .player-cards.active img:hover {
+  width: 150px;
+  height: calc(150px * 1.5);
+}
+
+.player-cards:not(.active) img.img-eligible-for-skip {
+  width: 100px;
+  height: calc(100px * 1.5);
+}
+
+.not-touch .player-cards img.img-eligible-for-skip:hover {
+  width: 125px;
+  height: calc(125px * 1.5);
+}
+
+.other-player-cards.active img {
+  width: 75px;
+  height: calc(75px * 1.5);
+}
+
+@keyframes rainbow {
+  0% {
+    color: red;
+  }
+  25% {
+    color: yellow;
+  }
+  50% {
+    color: lime;
+  }
+  75% {
+    color: blue;
+  }
+  100% {
+    color: red;
+  }
+}
+
+.other-player-cards.active p, .rainbow {
+  animation: rainbow 4s infinite;
+}
+
+.player-cards {
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  width: 100%;
+  height: 33vh;
+  justify-content: space-between;
+  align-items: flex-end;
+  overflow-x: scroll;
+  position: absolute;
+  background-color: var(--base-2);
+  padding: 20px;
+}
+
+.player-cards button {
+  margin-left: 30px;
+}
+
+.top-bar {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  height: 33vh;
+  text-align: center;
+  background-color: var(--base-2);
+}
+
+.log {
+  position: absolute;
+  left: 10px; top: 50%;
+  transform: translateY(-50%);
+}
+
+.log-message {
+  animation: show-log-message 3s linear;
+  border-radius: 5px;
+  padding: 5px 10px;
+  color: white;
+}
+
+@keyframes show-log-message {
+  0% {
+    opacity: 0;
+    border: 4px solid red;
+  }
+  20% {
+    opacity: 1;
+  }
+  50% {
+    border: none;
+    border-color: red;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+.other-players {
+  overflow-x: scroll;
+  width: 100%;
+  white-space: nowrap;
+  padding: 20px;
+  padding-bottom: 0;
+}
+
+.turn-order {
+  --current-color: red;
+  transition: transform 0.3s ease;
+  color: white;
+  text-align: center;
+  width: 100%;
+  font-size: 60px;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: var(--current-color);
+  margin: 0;
+}
+
+.other-players .other-player-cards {
+  text-align: center;
+  width: max-content;
+  display: inline-block;
+  margin: 0 20px;
+  white-space: nowrap;
+}
+
+.other-players .other-player-cards img {
+  margin-right: -40px;
+}
+
+.other-players .other-player-cards img:nth-last-child(2) {
+  margin-right: 0;
+}
+
+.other-players > div > p {
+  margin-top: 5px;
+}
+
+.board {
+  position: absolute;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  display: flex;
+  place-items: center;
+  background-color: var(--base-2);
+  padding: 20px;
+  border-radius: 15px;
+  gap: 20px;
+}
+
+.board img {
+  margin: 5px auto;
+  width: 75px;
+}
+
+.board div {
+  display: grid;
+  grid-template-areas: 
+      "card  deck"
+      "color text";
+  gap: 20px;
+}
+
+.board button {
+  height: 50%;
+  margin: 10px;
+}
+
+.board button.active {
+  background-color: lime;
+}
+
+.board button:disabled {
+  border-color: darkgreen;
+  color: grey;
+}
+
+.board button.active:disabled {
+  background-color: darkgreen;
+}
+
+
+.color-picker {
+  position: absolute;
+  z-index: 1;
+  bottom: 230px;
+  left: 50%;
+  white-space: nowrap;
+  transform: translate(-50%);
+}
+
+.popup {
+  position: fixed;
+  width: 50%;
+  top: 50%; left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--base-2);
+  border-radius: 10px;
+  padding: 30px;
+}
+
+.popup h3 {
+  margin: 0;
+  margin-bottom: 18px;
+  text-align: center;
+}
+
+.popup input {
+  border-radius: 5px;
+  border: none;
+  padding: 5px;
+}
+
+.popup p, .popup input {
+  font-size: 24px;
+  margin-top: 0;
+}
+
+.popup input {
+  width: 100%;
+  margin-bottom: 18px;
+  color: black;
+}
+
+.popup input:focus {
+  outline: none;
+}
+
+.popup > div {
+  text-align: center;
+}
+
+.popup > div button {
+  margin: 0 10px;
+}
+
+.popup-background {
+  content: '';
+  position: fixed;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #00000088;
+}
