@@ -143,8 +143,8 @@ const game = new Vue({
       if (newName === null) return;
       if (!newName.trim() || newName.length > 15) {
         showPopup({
-          header: 'Invalid name.',
-          paragraph: 'Name must be less than 15 characters and non-empty.'
+          header: 'Nombre No Valido.',
+          paragraph: 'Tiene que tener menos de 15 caracteres.'
         });
         return;
       }
@@ -152,7 +152,7 @@ const game = new Vue({
       for (const player of Object.values(this.gameData.players)) {
         if (player.name === newName) {
           showPopup({
-            header: 'Name already in use.'
+            header: 'Nombre en Uso.'
           });
           return;
         }
@@ -169,9 +169,9 @@ const game = new Vue({
         if (this.client.cards.length === 1 && !this.unoDeclared) {
           this.client.cards.push(randomCard(), randomCard(), randomCard(), randomCard());
           showPopup({
-            header: 'You forgot to declare UNO!'
+            header: '¡Olvidaste decir UNO!'
           });
-          log(`${this.client.name} forgot to declare UNO!`);
+          log(`${this.client.name} se le olvido decir UNO!`);
         }
         this.unoDeclared = false;
       }
@@ -180,7 +180,7 @@ const game = new Vue({
       if (this.cardCanSkip(card)) {
         this.gameData.currentCard = card;
 
-        log(`${this.client.name} skipped ${Object.values(this.gameData.players)[this.gameData.currentPlayer].name}'s turn!`);
+        log(`${this.client.name} ha skipeado ${Object.values(this.gameData.players)[this.gameData.currentPlayer].name} su turno`);
 
         this.gameData.turnSkip = true;
         if (card.number !== -1) {
