@@ -586,7 +586,7 @@ function checkEndOfGame() {
     
     // Win and reset game
     showPopup({
-      header: '!Has ganado¡'
+      header: '¡Has ganado!'
     });
     game.gameData.winners.push(game.client.name);
 
