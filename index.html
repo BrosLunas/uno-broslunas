@@ -7,6 +7,8 @@
     <title>Uno Online | Broslunas</title>
     <link rel="stylesheet" href="style.css">
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <link rel="icon" type="image/pmg" href="/cards/+4.png"/>
+
   </head>
   <body>
     
@@ -35,20 +37,15 @@
         </button>
 
         <script>
-        function getlink() {
-        var aux = document.createElement("input");
-        aux.setAttribute("value",window.location.href);
-        document.body.appendChild(aux);
-        aux.select();
-        document.execCommand("copy");
-        document.body.removeChild(aux);
-        }
+          function getlink() {
+          var aux = document.createElement("input");
+          aux.setAttribute("value",window.location.href);
+          document.body.appendChild(aux);
+          aux.select();
+          document.execCommand("copy");
+          document.body.removeChild(aux);
+          }
         </script>
-
-
-
-
-
 
         <div class="game-settings">
           <h1>Ajustes</h1>
@@ -103,7 +100,7 @@
   
             <div v-for="otherPlayer in otherPlayers" class="other-player-cards" :class="{ active: Object.values(gameData.players)[gameData.currentPlayer].name === otherPlayer.name }">
               <img v-for="card in otherPlayer.cards" src="cards/back.png">
-              <p>{{otherPlayer.name}} ({{otherPlayer.cards.length}})</p>
+              <p>{{otherPlayer.name}}: {{otherPlayer.cards.length}} cartas</p>
             </div>
 
           </div>
