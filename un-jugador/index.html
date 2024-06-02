@@ -1,7 +1,7 @@
 <html>
 
 <head>
-  <title>Playfield Compare</title>
+  <title>UNO | Broslunas</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -27,13 +27,13 @@
     <form class="text-center">
       <div class="form-group mt-5">
         <label for="playerName">
-          <h1>Player Name</h1>
+          <h1>Nombre</h1>
         </label>
-        <input type="text" class="form-control form-size" id="playerName" value="TheLegend27">
+        <input type="text" class="form-control form-size" id="playerName" value="Desconocido">
       </div>
       <div class="form-group mt-5">
         <label for="amtPlayers">
-          <h1>Number of Players</h1>
+          <h1>Numero de Jugadores</h1>
         </label>
         <select class="form-control form-size" id="amtPlayers">
           <option value="2" selected="selected">2</option>
@@ -43,12 +43,7 @@
       </div>
       <div class="form-group mt-5">
         <button class="btn btn-primary center-block" type="button" onclick="startGame()">
-          <h1>New Game</h1>
-        </button>
-      </div>
-      <div class="form-group mt-5">
-        <button class="btn btn-primary center-block" type="button" onclick="window.open('rules.html','_self')">
-          <h1>Rules & Info</h1>
+          <h1>Jugar</h1>
         </button>
       </div>
     </form>
@@ -80,7 +75,7 @@
             <br />
             <div id="unoButton">
               <button class="btn btn-primary center-block" type="button" onclick="callUno()">
-                <h2>Call Uno!</h2>
+                <h2>UNO!</h2>
               </button>
             </div>
           </div>
@@ -107,7 +102,7 @@
     <div id="wildColor"></div>
     <div id="overlay">
       <div id="text">
-        <center>Choose a color!</center>
+        <center>¡Elige un Color!</center>
         <div class="main-container">
           <div class="size red-circle" onclick="selectWildColor('Red')"></div>
           <div class="size blue-circle" onclick="selectWildColor('Blue')"></div>
