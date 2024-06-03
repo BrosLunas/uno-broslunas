@@ -5,19 +5,20 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #00ffff4f; /* Color de fondo azul cian */
+    background-color: #FFBCF5; /* Color de fondo azul cian */
 }
 
 .container {
     text-align: center;
-    background: rgb(211, 211, 211);
+    background: #ff8dee;
     padding: 20px;
     border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
 }
 
 h1 {
     margin-bottom: 20px;
+    color: white;
 }
 
 .options {
@@ -25,7 +26,7 @@ h1 {
 }
 
 .option {
-    background-color: #007BFF;
+    background-color: #ff00d4;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -42,5 +43,18 @@ h1 {
 }
 
 .option:hover {
-    background-color: #0056b3;
+    background-color: #9b0081;
+}
+
+aside {
+    width: 200px; /* Ajusta el ancho de los aside según tus necesidades */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+aside img {
+    max-width: 100%;
+    height: auto;
 }
