@@ -5,12 +5,12 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
-    background-color: #FFBCF5; /* Color de fondo azul cian */
+    background-color: #ffbe7d; /* Color de fondo azul cian */
 }
 
 .container {
     text-align: center;
-    background: #ff8dee;
+    background: #fa9631;
     padding: 20px;
     border-radius: 8px;
     box-shadow: 0 0 10px rgba(255, 255, 255, 0.1);
@@ -26,7 +26,7 @@ h1 {
 }
 
 .option {
-    background-color: #ff00d4;
+    background-color: #db6d00;
     color: white;
     border: none;
     padding: 10px 20px;
@@ -43,7 +43,7 @@ h1 {
 }
 
 .option:hover {
-    background-color: #9b0081;
+    background-color: #914800;
 }
 
 aside {
