@@ -135,3 +135,12 @@ li {
   border-radius: 50%;
   border: 2px solid #ffffff;
 }
+
+.option a {
+  color: white;
+  text-decoration: none;
+}
+
+.option:hover {
+  background-color: #914800;
+}

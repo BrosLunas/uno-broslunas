@@ -399,3 +399,12 @@ img {
   height: 100%;
   background-color: #00000088;
 }
+
+.option a {
+  color: white;
+  text-decoration: none;
+}
+
+.option:hover {
+  background-color: #914800;
+}

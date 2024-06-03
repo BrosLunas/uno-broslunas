@@ -45,16 +45,3 @@ h1 {
 .option:hover {
     background-color: #914800;
 }
-
-aside {
-    width: 200px; /* Ajusta el ancho de los aside según tus necesidades */
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-}
-
-aside img {
-    max-width: 100%;
-    height: auto;
-}
